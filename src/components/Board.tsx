@@ -26,3 +26,4 @@ function Board({ index, onClick, player }: Props) {
 }
 
 export default Board;
+//
