@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import COPYRIGHT from '../.copyright';
 import Board from './components/Board';
 
 const INITIAL_GAME_STATE = ['', '', '', '', '', '', '', '', ''];
@@ -65,37 +66,36 @@ function Game() {
   };
 
   return (
-    <div className="h-full p-8 text-slate-800 bg-gradient-to-r from-cyan-500 to-blue-500">
+    <div className="h-full p-8 text-slate-800 bg-gradient-to-r from-green-800 to-green-500">
       <h1 className="text-center text-5xl mb-4 font-display text-white">
         Tic Tac Toe
       </h1>
-      <div>
-        <div className="grid grid-cols-3 gap-3 mx-auto w-96">
-          {gameState.map((player, index) => (
-            <Board
-              key={index}
-              onClick={handleCellClick}
-              index={index}
-              player={player}
-            />
-          ))}
-        </div>
-        {(winner || isDraw) && (
-          <div className="mt-8 flex flex-col items-center">
-            <div className="text-2xl mb-4 text-white">
-              {winner
-                ? `Congrats player ${winner}! You are the winner!`
-                : 'The game ended in a draw.'}
-            </div>
-            <button
-              onClick={resetBoard}
-              className="px-6 py-2 bg-white text-blue-600 font-semibold rounded shadow hover:bg-blue-100"
-            >
-              Try Again?
-            </button>
-          </div>
-        )}
+      <div className="grid grid-cols-3 gap-3 w-full max-w-sm mx-auto">
+        {gameState.map((player, index) => (
+          <Board
+            key={index}
+            onClick={handleCellClick}
+            index={index}
+            player={player}
+          />
+        ))}
       </div>
+      {(winner || isDraw) && (
+        <div className="mt-8 flex flex-col items-center">
+          <div className="text-2xl mb-4 text-white">
+            {winner ? `Congrats ${winner}! You win!` : 'Its ended in a draw.'}
+          </div>
+          <button
+            onClick={resetBoard}
+            className="px-6 py-2 bg-white text-blue-600 font-semibold rounded shadow hover:bg-blue-100"
+          >
+            Try Again?
+          </button>
+        </div>
+      )}
+      <footer className="fixed bottom-0 left-0 w-full text-center text-sm text-gray-200 bg-green-900/50 py-2">
+        {COPYRIGHT}
+      </footer>
     </div>
   );
 }
