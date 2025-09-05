@@ -37,7 +37,7 @@ function Game() {
   };
 
   const handleCellClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (winner || isDraw) return; // Prevent moves after game over
+    if (winner || isDraw) return;
 
     const cellIndex = Number(
       (event.target as HTMLDivElement).getAttribute('data-cell-index')
