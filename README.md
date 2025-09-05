@@ -1,5 +1,10 @@
 # Tic-Tac-Toe
 
+<p align="center">
+  <img src="./public/preview.png" alt="tictactoe preview" />
+
+</p>
+
 A simple Tic-Tac-Toe game built with **React** and **TypeScript**.
 
 ## About the Assignment
