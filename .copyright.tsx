@@ -1,7 +1,15 @@
 const COPYRIGHT = (
-  <span className="flex justify-center items-center gap-2 text-sm text-gray-200">
-    © 2025 Tom Larsson. All rights reserved. |
-    <span className="text-yellow-400">See all my schoolproject at</span>
+  <span className="flex justify-center items-center gap-2 text-sm text-gray-200 p-4">
+    © 2025
+    <a
+      href="https://tombenrex.me"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-yellow-400 underline transition-colors"
+    >
+      tombenrex
+    </a>
+    |
     <a
       href="https://github.com/boras-frontend-react"
       target="_blank"

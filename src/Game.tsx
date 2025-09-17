@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import COPYRIGHT from '../.copyright';
 import Board from './components/Board';
+import Status from './components/Status';
+import COPYRIGHT from '../.copyright';
 
-const INITIAL_GAME_STATE = ['', '', '', '', '', '', '', '', ''];
+const INITIAL_GAME_STATE = Array(9).fill('');
 const WINNING_COMBOS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -28,8 +29,7 @@ function Game() {
   };
 
   const checkForWinner = (board: string[]): string | null => {
-    for (let i = 0; i < WINNING_COMBOS.length; i++) {
-      const [a, b, c] = WINNING_COMBOS[i];
+    for (const [a, b, c] of WINNING_COMBOS) {
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
         return board[a];
       }
@@ -37,63 +37,40 @@ function Game() {
     return null;
   };
 
-  const handleCellClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (winner || isDraw) return;
-
-    const cellIndex = Number(
-      (event.target as HTMLDivElement).getAttribute('data-cell-index')
-    );
-    if (gameState[cellIndex]) return;
-
+  const handleCellClick = (index: number) => {
+    if (winner || isDraw || gameState[index]) return;
     const newBoard = [...gameState];
-    newBoard[cellIndex] = currentPlayer;
-
+    newBoard[index] = currentPlayer;
     const win = checkForWinner(newBoard);
     if (win) {
       setGameState(newBoard);
       setWinner(win);
       return;
     }
-
     if (!newBoard.includes('')) {
       setGameState(newBoard);
       setIsDraw(true);
       return;
     }
-
     setGameState(newBoard);
     setCurrentPlayer((prev) => (prev === 'X' ? 'O' : 'X'));
   };
 
   return (
-    <div className="h-full p-8 text-slate-800 bg-gradient-to-r from-green-800 to-green-500">
-      <h1 className="text-center text-5xl mb-4 font-display text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-green-800 to-green-500">
+      <h1 className="text-center text-5xl font-display text-white pt-8">
         Tic Tac Toe
       </h1>
-      <div className="grid grid-cols-3 gap-3 w-full max-w-sm mx-auto">
-        {gameState.map((player, index) => (
-          <Board
-            key={index}
-            onClick={handleCellClick}
-            index={index}
-            player={player}
-          />
-        ))}
-      </div>
-      {(winner || isDraw) && (
-        <div className="mt-8 flex flex-col items-center">
-          <div className="text-2xl mb-4 text-white">
-            {winner ? `Congrats ${winner}! You win!` : 'Its ended in a draw.'}
-          </div>
-          <button
-            onClick={resetBoard}
-            className="px-6 py-2 bg-white text-blue-600 font-semibold rounded shadow hover:bg-blue-100"
-          >
-            Try Again?
-          </button>
-        </div>
-      )}
-      <footer className="fixed bottom-0 left-0 w-full text-center text-sm text-gray-200 bg-green-900/50 py-2">
+      <main className="flex-1 flex flex-col items-center justify-center">
+        <Board squares={gameState} onCellClick={handleCellClick} />
+        <Status
+          currentPlayer={currentPlayer}
+          winner={winner}
+          isDraw={isDraw}
+          onRestart={resetBoard}
+        />
+      </main>
+      <footer className="text-center text-sm bg-gradient-to-r from-emerald-900 to-green-900 p-2">
         {COPYRIGHT}
       </footer>
     </div>
