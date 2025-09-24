@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import RestartButton from './RestartButton';
+import { RestartButton } from '@components';
 
 interface StatusProps {
   currentPlayer: string;

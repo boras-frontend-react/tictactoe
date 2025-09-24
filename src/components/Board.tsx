@@ -1,4 +1,4 @@
-import Square from './Square';
+import { Square } from '@components';
 
 interface BoardProps {
   squares: string[];

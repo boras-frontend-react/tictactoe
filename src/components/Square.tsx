@@ -14,7 +14,6 @@ const Square: React.FC<SquareProps> = ({ value, onClick }) => {
       onClick={onClick}
       data-testid="square"
     >
-      {/* Only the X or O gets the color */}
       <span className={valueClass}>{value}</span>
     </div>
   );
