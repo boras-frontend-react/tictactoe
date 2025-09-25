@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { RestartButton } from '@components';
+import { getPlayerClass } from '@utils';
 
 interface StatusProps {
   currentPlayer: string;
@@ -7,9 +8,6 @@ interface StatusProps {
   isDraw: boolean;
   onRestart: () => void;
 }
-
-const box =
-  'w-72 h-20 mx-auto flex items-center justify-center perspective-600 bg-black rounded shadow-lg text-white text-xl';
 
 export default function Status({
   currentPlayer,
@@ -30,9 +28,9 @@ export default function Status({
   }, [winner, isDraw]);
 
   return (
-    <div className={box}>
+    <div className="border-3 border-accent bg-secondary text-primary-content h-16 w-full sm:w-64 lg:w-72 text-center">
       <div
-        className={`relative w-full h-full transition-transform duration-500 preserve-3d ${
+        className={`relative w-full h-full transition-transform duration-500 preserve-3d text-2xl sm:text-2xl ${
           showRestart ? 'rotate-y-180' : ''
         }`}
       >
@@ -40,7 +38,7 @@ export default function Status({
           {winner ? (
             <>
               Congrats&nbsp;
-              <span className="text-yellow-400 font-bold">{winner}</span>
+              <span className="text-accent font-bold">{winner}</span>
               &nbsp;You win!
             </>
           ) : isDraw ? (
@@ -48,7 +46,9 @@ export default function Status({
           ) : (
             <>
               It's&nbsp;
-              <span className="text-yellow-400 font-bold">{currentPlayer}</span>
+              <span className={getPlayerClass(currentPlayer)}>
+                {currentPlayer}
+              </span>
               &nbsp;Turn
             </>
           )}

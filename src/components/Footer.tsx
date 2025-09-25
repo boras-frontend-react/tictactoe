@@ -1,12 +1,12 @@
 const Footer = () => (
-  <footer>
-    <span className="flex justify-center items-center gap-2 text-sm text-gray-200 p-4">
-      © 2025
+  <footer className="border-t-accent border-t-4 shadow-md">
+    <span className="flex justify-center items-center gap-2 text-sm p-4">
+      © {new Date().getFullYear()}
       <a
         href="https://tombenrex.me"
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-yellow-400 underline transition-colors"
+        className="hover:text-accent transition-colors"
       >
         tombenrex
       </a>
@@ -15,7 +15,7 @@ const Footer = () => (
         href="https://github.com/boras-frontend-react"
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-white transition-colors"
+        className="hover:text-accent transition-colors"
         aria-label="GitHub"
       >
         <svg

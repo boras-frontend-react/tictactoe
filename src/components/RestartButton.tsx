@@ -6,8 +6,11 @@ interface RestartButtonProps {
 export default function RestartButton({ show, onClick }: RestartButtonProps) {
   if (!show) return null;
   return (
-    <div className="flex flex-col items-center text-2xl text-white">
-      <button onClick={onClick} className="px-6 py-2 hover:text-yellow-400">
+    <div className="text-center text-2xl w-full h-full">
+      <button
+        onClick={onClick}
+        className="hover:bg-neutral-content w-full h-full"
+      >
         Try Again?
       </button>
     </div>

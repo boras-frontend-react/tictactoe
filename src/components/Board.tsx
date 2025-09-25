@@ -6,7 +6,7 @@ interface BoardProps {
 }
 
 const Board: React.FC<BoardProps> = ({ squares, onCellClick }) => (
-  <div className="grid grid-cols-3 gap-3 w-max mx-auto mb-14">
+  <div className="grid grid-cols-3 gap-3 w-max mx-auto">
     {squares.map((value, idx) => (
       <Square key={idx} value={value} onClick={() => onCellClick(idx)} />
     ))}

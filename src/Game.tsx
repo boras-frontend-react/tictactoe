@@ -39,11 +39,8 @@ function Game() {
 
   return (
     <div className="w-full flex flex-col items-center px-4 pb-8 pt-8 max-w-xl mx-auto">
-      <h1 className="text-center text-4xl sm:text-5xl font-display text-white mb-8">
-        Tic Tac Toe
-      </h1>
       <Board squares={gameState} onCellClick={handleCellClick} />
-      <div className="mt-8 w-full">
+      <div className="mt-8 w-full items-center flex flex-col">
         <Status
           currentPlayer={currentPlayer}
           winner={winner}
