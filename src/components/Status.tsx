@@ -28,13 +28,13 @@ export default function Status({
   }, [winner, isDraw]);
 
   return (
-    <div className="border-3 border-accent bg-secondary text-primary-content h-16 w-full sm:w-64 lg:w-72 text-center">
+    <div className=" border-3 border-accent bg-secondary text-primary-content h-16 w-full sm:w-64 lg:w-72 text-2xl sm:text-2xl">
       <div
-        className={`relative w-full h-full transition-transform duration-500 preserve-3d text-2xl sm:text-2xl ${
+        className={`relative w-full h-full transition-transform duration-500 preserve-3d  ${
           showRestart ? 'rotate-y-180' : ''
         }`}
       >
-        <div className="absolute inset-0 flex items-center justify-center backface-hidden ">
+        <div className="absolute inset-0 backface-hidden flex items-center justify-center text-center">
           {winner ? (
             <>
               Congrats&nbsp;
