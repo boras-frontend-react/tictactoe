@@ -20,21 +20,22 @@ function Game() {
 
   const handleCellClick = (index: number) => {
     if (winner || isDraw || gameState[index]) return;
+
     const newBoard = [...gameState];
     newBoard[index] = currentPlayer;
+
     const win = checkWinner(newBoard);
-    if (win) {
-      setGameState(newBoard);
-      setWinner(win);
-      return;
-    }
-    if (!newBoard.includes('')) {
-      setGameState(newBoard);
-      setIsDraw(true);
-      return;
-    }
+    const boardIsFull = !newBoard.includes('');
+
     setGameState(newBoard);
-    setCurrentPlayer((prev) => (prev === 'X' ? 'O' : 'X'));
+
+    if (win) {
+      setWinner(win);
+    } else if (boardIsFull) {
+      setIsDraw(true);
+    } else {
+      setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+    }
   };
 
   return (

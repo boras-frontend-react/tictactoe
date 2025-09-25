@@ -28,7 +28,7 @@ export default function Status({
   }, [winner, isDraw]);
 
   return (
-    <div className=" border-3 border-accent bg-secondary text-primary-content h-16 w-full sm:w-64 lg:w-72 text-2xl sm:text-2xl">
+    <div className="border-3 border-accent bg-secondary text-primary-content h-16 w-full sm:w-64 lg:w-72 text-xl sm:text-xl">
       <div
         className={`relative w-full h-full transition-transform duration-500 preserve-3d  ${
           showRestart ? 'rotate-y-180' : ''
