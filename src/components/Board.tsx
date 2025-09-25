@@ -3,6 +3,7 @@ import { Square } from '@components';
 interface BoardProps {
   squares: string[];
   onCellClick: (index: number) => void;
+  ss;
 }
 
 const Board: React.FC<BoardProps> = ({ squares, onCellClick }) => (
